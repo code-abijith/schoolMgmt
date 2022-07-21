@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_teacher" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add Teacher
+            </p>
+        </field>
+    </record>
+    <record id="teacher_search" model="ir.ui.view">
+        <field name="name">school.teacher.search</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <search string="teacher">
+                <field name="name"/>
+                <field name="subject"/>
+                <separator/>
+
+                <group expand="1" string="Group By">
+                    <filter string="Gender" name="gender" context="{'group_by': 'gender'}"/>
+                    <filter string="Role" name="role" context="{'group_by': 'role'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="view_teacher_form" model="ir.ui.view">
+        <field name="name">school.teacher.form</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+
+                </header>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+
+                    <div class="oe_title">
+                        <h1>
+
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="gender"/>
+                            <field name="age"/>
+                            <field name="contact_no"/>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="role"/>
+                            <field name="class_std"/>
+                            <field name="subject" string="Subject_1"/>
+                            <field name="subject_1" string="Subject_2"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_teacher_tree" model="ir.ui.view">
+        <field name="name">school.teacher.tree</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="role"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_teacher_kanban" model="ir.ui.view">
+        <field name="name">school.teacher.kanban</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="role"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        <field name="image" widget="image" class="oe_avatar"/>
+                                    </li>
+                                    <li>
+                                        Name :
+                                        <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Age :
+                                        <field name="age"/>
+                                    </li>
+                                    <li>
+                                        Gender :
+                                        <field name="gender"/>
+                                    </li>
+                                    <li>
+                                        Role :
+                                        <field name="role"/>
+                                    </li>
+
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="action_class_teacher" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('role', '=', 'class')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add Teacher
+            </p>
+        </field>
+    </record>
+    <record id="action_subject_teacher" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('role', '=', 'subject')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add Teacher
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="Teacher_class_root"
+              name="Teachers"
+              parent="School_root"
+              sequence="20"/>
+    <menuitem id="menu_Teacher"
+              name="Teacher"
+              parent="Teacher_class_root"
+              action="action_teacher"
+              sequence="10"/>
+    <menuitem id="menu_Teacher_1"
+              name="Class Teacher"
+              parent="Teacher_class_root"
+              action="action_class_teacher"
+              sequence="20"/>
+    <menuitem id="menu_Teacher_2"
+              name="Subject Teacher"
+              parent="Teacher_class_root"
+              action="action_subject_teacher"
+              sequence="30"/>
+
+
+</odoo>

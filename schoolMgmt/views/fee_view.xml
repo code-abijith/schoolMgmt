@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_fee" model="ir.actions.act_window">
+        <field name="name">Fee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.fee</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add Fee
+            </p>
+        </field>
+    </record>
+    <record id="view_fee_form" model="ir.ui.view">
+        <field name="name">school.fee.form</field>
+        <field name="model">school.fee</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <h1>
+                        <field name="reference" readonly="1"/>
+                    </h1>
+
+                </header>
+                <sheet>
+                    <!--                    <field name="image" widget="image" class="oe_avatar" force_save="1"/>-->
+
+
+                    <div class="oe_title">
+                        <h1>
+
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="total_fees"/>
+                            <field name="fees"/>
+                            <field name="due"/>
+                            <field name="parent"/>
+                            <field name="contact_no"/>
+                        </group>
+                        <group>
+                            <field name="home_room_teacher"/>
+                            <field name="class_std"/>
+                            <field name="reference" readonly="1"/>
+
+
+                        </group>
+                    </group>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="activity_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="view_fee_tree" model="ir.ui.view">
+        <field name="name">school.fee.tree</field>
+        <field name="model">school.fee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="reference"/>
+
+                <field name="fees"/>
+                <field name="due"/>
+                <field name="parent"/>
+                <field name="contact_no"/>
+                <field name="class_std"/>
+                <field name="home_room_teacher"/>
+            </tree>
+        </field>
+    </record>
+    <record id="fee_search" model="ir.ui.view">
+        <field name="name">school.fee.search</field>
+        <field name="model">school.fee</field>
+        <field name="arch" type="xml">
+            <search string="students">
+                <field name="name"/>
+                <field name="reference"/>
+                <separator/>
+
+                <group expand="1" string="Group By">
+                    <filter string="Reference" name="reference" context="{'group_by': 'reference'}"/>
+                    <filter string="Name" name="name" context="{'group_by': 'name'}"/>
+                    <filter string="Class" name="class_std" context="{'group_by': 'class_std'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <menuitem id="School_fee_root"
+              name="Fees"
+              parent="School_root"
+              sequence="80"/>
+    <menuitem id="menu_fee"
+              name="Fee Status"
+              parent="School_fee_root"
+              action="action_fee"
+              sequence="20"/>
+
+
+</odoo>

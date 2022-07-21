@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_male_student" model="ir.actions.act_window">
+        <field name="name">Male Students</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{'hide_gender': 1}</field>
+        <field name="domain">[('gender', '=', 'male')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your Male student
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_Student_M"
+              name="Male Students"
+              parent="School_class_root"
+              action="action_male_student"
+              sequence="30"/>
+<record id="action_female_student" model="ir.actions.act_window">
+        <field name="name">Female Students</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{'hide_gender': 1}</field>
+        <field name="domain">[('gender', '=', 'female')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your Female student
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_Student_F"
+              name="Female Students"
+              parent="School_class_root"
+              action="action_female_student"
+              sequence="40"/>
+
+
+
+</odoo>

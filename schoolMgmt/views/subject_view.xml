@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_subject" model="ir.actions.act_window">
+        <field name="name">Subject</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.subject</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+<!--        <field name="domain">[('age', '&lt;=', 8)]</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add Subject
+            </p>
+        </field>
+    </record>
+    <record id="view_subject_form" model="ir.ui.view">
+        <field name="name">school.subject.form</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+
+                </header>
+                <sheet>
+
+                    <div class="oe_title">
+                        <h1>
+
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="subject"/>
+                            <field name="teacher"/>
+                            <field name="class_std"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+                <div class="oe_chatter">
+                    <field name="activity_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="view_subject_tree" model="ir.ui.view">
+        <field name="name">school.subject.tree</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="subject"/>
+                <field name="teacher"/>
+                <field name="class_std"/>
+            </tree>
+        </field>
+    </record>
+    <menuitem id="School_subject_root"
+              name="Subjects"
+              parent="School_root"
+              sequence="30"/>
+    <menuitem id="menu_Subject"
+              name="Subjects"
+              parent="School_subject_root"
+              action="action_subject"
+              sequence="10"/>
+<!--    <menuitem id="menu_Subject_M"-->
+<!--              name="Maths"-->
+<!--              parent="School_subject_root"-->
+<!--              action="action_subject"-->
+<!--              sequence="10"/>-->
+<!--    <menuitem id="menu_Subject_E"-->
+<!--              name="English"-->
+<!--              parent="School_subject_root"-->
+<!--              action="action_subject"-->
+<!--              sequence="20"/>-->
+<!--    <menuitem id="menu_Subject_S"-->
+<!--              name="Science"-->
+<!--              parent="School_subject_root"-->
+<!--              action="action_subject"-->
+<!--              sequence="30"/>-->
+<!--    <menuitem id="menu_Subject_M2"-->
+<!--              name="Malayalam"-->
+<!--              parent="School_subject_root"-->
+<!--              action="action_subject"-->
+<!--              sequence="40"/>-->
+<!--    <menuitem id="menu_Subject_H"-->
+<!--              name="Hindi"-->
+<!--              parent="School_subject_root"-->
+<!--              action="action_subject"-->
+<!--              sequence="50"/>-->
+</odoo>

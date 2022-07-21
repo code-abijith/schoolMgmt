@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_exam" model="ir.actions.act_window">
+        <field name="name">Exam</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.subject</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add Exam
+            </p>
+        </field>
+    </record>
+    <record id="view_exam_form" model="ir.ui.view">
+        <field name="name">school.exam.form</field>
+        <field name="model">school.exam</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+
+                </header>
+                <sheet>
+
+
+                    <div class="oe_title">
+                        <h1>
+
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="teacher"/>
+                            <field name="class_std"/>
+                            <field name="semester"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="activity_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="view_exam_tree" model="ir.ui.view">
+        <field name="name">school.exam.tree</field>
+        <field name="model">school.exam</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="teacher"/>
+                <field name="class_std"/>
+                <field name="semester"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <menuitem id="School_exam_root"
+              name="Exams"
+              parent="School_root"
+              sequence="40"/>
+    <menuitem id="menu_Exam"
+              name="Exams"
+              parent="School_exam_root"
+              action="action_exam"
+              sequence="20"/>
+    <menuitem id="menu_Subject1"
+              name="1st Semester"
+              parent="School_exam_root"
+              action="action_exam"
+              sequence="30"/>
+    <menuitem id="menu_Subject2"
+              name="2nd Semester"
+              parent="School_exam_root"
+              action="action_exam"
+              sequence="40"/>
+
+
+</odoo>
